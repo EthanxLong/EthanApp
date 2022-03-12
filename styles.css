@@ -1,7 +1,7 @@
 body {
   background-color: pink;
 }
-
 p {
-  color: aqua;
+  font-family: "Gill Sans";
+  font-size: 40px;
 }
