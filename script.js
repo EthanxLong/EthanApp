@@ -3,5 +3,5 @@ element.addEventListener("click", iloveyouMore);
 
 function iloveyouMore() {
     document.getElementById("hehe").innerHTML = "So Perfect Dx, text me??";
-    document.getElementById("textme").innerHTML = '<button class ="button" id="ilybutton">Look at my perfect bebe</button>'
+    document.getElementById("textme").innerHTML = '<a class="button" href="sms:18479093707&body=Heyyy lovey I miss yu">Text Me!</a>'
 }
