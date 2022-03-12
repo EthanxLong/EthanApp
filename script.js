@@ -3,7 +3,7 @@ element.addEventListener("click", iloveyouMore);
 
 function iloveyouMore() {
     document.getElementById("hehe").innerHTML = "I LOVE YOU TOOOO! Why don't you text me??";
-    document.getElementById("textme").innerHTML = '<a class="button" href="sms:18479093707&body=I MISS YOU SOOOOO MUCH BEBE LUBBY">Tap here to send me a cute msg 😳</a>'
+    document.getElementById("textme").innerHTML = '<a class="button" href="sms:18479093707&body=I love you veeeerry much Ethan, this web app is awesome!">Tap here to send me a cute msg 😳</a>'
 }
 
 function getQuote( random ){
