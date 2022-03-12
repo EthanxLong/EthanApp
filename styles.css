@@ -2,7 +2,8 @@ body {
   background-color: pink;
 }
 
-h1 {
+h1,
+p {
   font-family: "Gill Sans";
   font-size: 20px;
 }
