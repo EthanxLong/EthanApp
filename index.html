@@ -4,33 +4,49 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Lelly App</title>
 </head>
 <body>
     <div class="flex-container">
         <div>
             <h1>💖💜Have a great day Lelly!💜💖</h1>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <p id="icon"></p>
+    </div>
+
+    <span>
+        <div>
             <p id="temp"> Current Temp: </p>
+        </div>
+        <div>
             <p id="desc"> Description: </p>
         </div>
+    </span>
+
+    <div class="flex-container">
 
         <div>
             <img src="pics/LandE.JPG" alt="pictureofus">
         </div>
         
         <div>
-            <button class ="button" id="ilybutton">Tap here if you love me 🥺</button>
-        </div>
-
-        <div>
-            <h1 id="hehe"></h1>
+            <a class ="button" id="ilybutton">Tap here if you love me 🥺</a>
         </div>
 
         <div>
             <p id="textme"></p>
         </div>
 
+        <div>
+            <h1 id="hehe"></h1>
+        </div>
+
     </div>
+
     <script src="script.js"> </script>
 </body>
 </html>
