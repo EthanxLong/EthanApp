@@ -8,6 +8,13 @@ function iloveyouMore() {
 
 function getQuote() {
     fetch('https://zenquotes.io/api/random/')
+    .then(function(resp1) {return resp1.json() })
+    .then(function(data1) {
+        console.log(data1);
+    })
+    .catch(function() {
+
+    });
 }
 
 function getWeather( cityID ){
