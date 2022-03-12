@@ -36,8 +36,6 @@ function getWeather( cityID ){
     .catch(function() {
 
     });
-
-    
     
 }
 
