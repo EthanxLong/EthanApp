@@ -18,7 +18,7 @@ function getQuote() {
 }
 
 function getWeather( cityID ){
-    fetch('http://api.openweathermap.org/data/2.5/weather?id=' +cityID+ '&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
+    fetch('https://api.openweathermap.org/data/2.5/weather?id=' +cityID+ '&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
     .then(function(resp) {return resp.json() })
     .then(function(data) {
         console.log(data);
