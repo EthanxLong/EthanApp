@@ -13,12 +13,12 @@ function getQuote(){
     .then(function(data) {
         let date = new Date().toLocaleDateString();
         if (localStorage.yourapp_date == date){
-            document.getElementById("quote").innerHTML = data[N].text;
+            document.getElementById("quote").innerHTML = '"' + data[N].text + '"';
             document.getElementById("author").innerHTML = "-" + data[N].author;
         }
         if (localStorage.yourapp_date != date){
-            document.getElementById("quote").innerHTML = data[N + 1].text;
-            document.getElementById("author").innerHTML = data[N + 1].author;
+            document.getElementById("quote").innerHTML = '"' + data[N + 1].text + '"';
+            document.getElementById("author").innerHTML = "-" + data[N + 1].author;
         }
   });
 }
