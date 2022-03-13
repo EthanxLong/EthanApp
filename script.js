@@ -5,7 +5,7 @@ function getFact() {
     fetch("https://uselessfacts.jsph.pl/random.json?language=en")
     .then(function(response1) { return response1.json() })
     .then(function(data1) {
-        document.getElementById("hehe").innerHTML = data1.text
+        alert(data1.text)
     });
 }
 
@@ -51,6 +51,5 @@ function getWeather( cityID ){
 window.onload = function() {
     getWeather( 4259418 );
     getQuote()
-    getFact()
 }
 
