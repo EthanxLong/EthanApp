@@ -9,23 +9,6 @@ function getFact() {
     });
 }
 
-function getLocation() {    
-    fetch("https://ip-geo-location.p.rapidapi.com/ip/check?format=json", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "6ea95bd3f9msh2296152b2065ff1p1031a9jsn561778739cdb",
-		"x-rapidapi-host": "ip-geo-location.p.rapidapi.com"
-	}
-})
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.error(err);
-});
-}
-
-
 function getQuote(){
     let N = 0 
     fetch("https://type.fit/api/quotes")
@@ -43,28 +26,37 @@ function getQuote(){
   });
 }
 
-function getWeather( cityID ){
+function getWeather(){
     //api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
-    fetch('https://api.openweathermap.org/data/2.5/weather?id=' +cityID+ '&units=imperial&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
-    .then(function(resp) {return resp.json() })
-    .then(function(data) {
-        let desc = data.weather[0].description
-        let temp = data.main.temp
-        temp = Math.trunc(temp)
-        let picID = data.weather[0].icon
-        document.getElementById("temp").innerHTML = "Temperature: " + temp + "°F";
-        document.getElementById("desc").innerHTML = "Description: " + desc;
-        document.getElementById("icon").innerHTML = '<img src=' + 'http://openweathermap.org/img/wn/' + picID + '@2x.png>';
-    })
-    .catch(function() {
-
+    fetch("https://api.freegeoip.app/json/?apikey=c93fa3a0-a31c-11ec-90a4-6f848fd20c1a")
+    .then(function(response1) { return response1.json() })
+    .then(function(data1) {
+        let lat = data1.latitude
+        let long = data1.longitude
+    
+        fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&units=imperial&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
+        // http://api.openweathermap.org/data/2.5/weather?lat=42&lon=-88&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4
+        .then(function(resp) {return resp.json() })
+        .then(function(data) {
+            console.log(data)
+            let desc = data.weather[0].description
+            let temp = data.main.temp
+            temp = Math.trunc(temp)
+            let picID = data.weather[0].icon
+            document.getElementById("temp").innerHTML = "Temperature: " + temp + "°F";
+            document.getElementById("desc").innerHTML = "Description: " + desc;
+            document.getElementById("icon").innerHTML = '<img src=' + 'http://openweathermap.org/img/wn/' + picID + '@2x.png>';
+        })
+        .catch(function() {
+    
+        });
     });
+    
     
 }
 
 window.onload = function() {
-    getWeather(4259418);
+    getWeather();
     getQuote();
-    getLocation();
 }
 
