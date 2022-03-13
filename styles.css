@@ -24,6 +24,8 @@ a,
 p {
   font-family: "Gill Sans";
   font-size: 20px;
+  margin: 0;
+  padding: 0;
 }
 
 img {
@@ -49,6 +51,9 @@ img {
   border-style: solid;
   border-radius: 25px;
   border-color: lightblue;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 #temp,
