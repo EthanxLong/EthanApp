@@ -31,13 +31,12 @@ function getWeather( cityID ){
     fetch('https://api.openweathermap.org/data/2.5/weather?id=' +cityID+ '&units=imperial&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
     .then(function(resp) {return resp.json() })
     .then(function(data) {
+        console.log(data)
         let desc = data.weather[0].description
         let temp = data.main.temp
         temp = Math.trunc(temp)
         let picID = data.weather[0].icon
-        if (temp < 50){
-            document.getElementById("temp").innerHTML = "Current Temp: " + temp + "°F 🥶🥶";
-        }
+        document.getElementById("temp").innerHTML = "Current Temp: " + temp + "°F";
         document.getElementById("desc").innerHTML = "Description: " + desc;
         document.getElementById("icon").innerHTML = '<img src=' + 'http://openweathermap.org/img/wn/' + picID + '@2x.png>';
     })
@@ -46,7 +45,6 @@ function getWeather( cityID ){
     });
     
 }
-
 
 window.onload = function() {
     getWeather( 4259418 );

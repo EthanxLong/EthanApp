@@ -27,10 +27,8 @@ a {
 }
 
 img {
-  border: 5px solid rgb(37, 206, 197);
-  border-radius: 25px;
   padding: 5px;
-  width: 150px;
+  width: 50px;
 }
 
 .button {
@@ -46,7 +44,9 @@ img {
 }
 
 .quotes {
-  border: 5px solid lightcoral;
-  border-radius: 4px;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
