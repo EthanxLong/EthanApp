@@ -20,8 +20,8 @@ span {
 }
 
 h1,
-p,
-a {
+a,
+p {
   font-family: "Gill Sans";
   font-size: 20px;
 }
@@ -44,9 +44,9 @@ img {
 }
 
 .quotes {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  border-style: solid;
+  border-radius: 25px;
+  border-color: lightblue;
 }

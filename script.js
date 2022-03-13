@@ -9,6 +9,22 @@ function getFact() {
     });
 }
 
+function getLocation() {    
+    fetch("https://ip-geo-location.p.rapidapi.com/ip/check?format=json", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "6ea95bd3f9msh2296152b2065ff1p1031a9jsn561778739cdb",
+		"x-rapidapi-host": "ip-geo-location.p.rapidapi.com"
+	}
+})
+.then(response => {
+	console.log(response);
+})
+.catch(err => {
+	console.error(err);
+});
+}
+
 
 function getQuote(){
     let N = 0 
@@ -28,15 +44,15 @@ function getQuote(){
 }
 
 function getWeather( cityID ){
+    //api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
     fetch('https://api.openweathermap.org/data/2.5/weather?id=' +cityID+ '&units=imperial&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
     .then(function(resp) {return resp.json() })
     .then(function(data) {
-        console.log(data)
         let desc = data.weather[0].description
         let temp = data.main.temp
         temp = Math.trunc(temp)
         let picID = data.weather[0].icon
-        document.getElementById("temp").innerHTML = "Current Temp: " + temp + "°F";
+        document.getElementById("temp").innerHTML = "Temperature: " + temp + "°F";
         document.getElementById("desc").innerHTML = "Description: " + desc;
         document.getElementById("icon").innerHTML = '<img src=' + 'http://openweathermap.org/img/wn/' + picID + '@2x.png>';
     })
@@ -47,7 +63,8 @@ function getWeather( cityID ){
 }
 
 window.onload = function() {
-    getWeather( 4259418 );
-    getQuote()
+    getWeather(4259418);
+    getQuote();
+    getLocation();
 }
 
