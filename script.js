@@ -33,7 +33,10 @@ function getWeather(){
     .then(function(data1) {
         let lat = data1.latitude
         let long = data1.longitude
-    
+        console.log(data1.city, data1.region_code)
+
+        document.getElementById("location").innerHTML = data1.city + ', ' + data1.region_code
+
         fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&units=imperial&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
         // http://api.openweathermap.org/data/2.5/weather?lat=42&lon=-88&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4
         .then(function(resp) {return resp.json() })
@@ -43,8 +46,8 @@ function getWeather(){
             let temp = data.main.temp
             temp = Math.trunc(temp)
             let picID = data.weather[0].icon
-            document.getElementById("temp").innerHTML = "Temperature: " + temp + "°F";
-            document.getElementById("desc").innerHTML = "Description: " + desc;
+            document.getElementById("temp").innerHTML = temp + "°F";
+            document.getElementById("desc").innerHTML = desc;
             document.getElementById("icon").innerHTML = '<img src=' + 'http://openweathermap.org/img/wn/' + picID + '@2x.png>';
         })
         .catch(function() {

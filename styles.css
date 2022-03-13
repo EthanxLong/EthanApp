@@ -28,7 +28,7 @@ p {
 
 img {
   padding: 5px;
-  width: 50px;
+  width: 80px;
 }
 
 .button {
@@ -49,4 +49,9 @@ img {
   border-style: solid;
   border-radius: 25px;
   border-color: lightblue;
+}
+
+#temp,
+#desc {
+  font-size: 30px !important;
 }
