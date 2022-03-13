@@ -1,10 +1,14 @@
 const element = document.getElementById("ilybutton");
-element.addEventListener("click", iloveyouMore);
-function iloveyouMore() {
-    document.getElementById("hehe").innerHTML = "I LOVE YOU TOOOO! Why don't you text me??";
-    document.getElementById("textme").innerHTML = '<a class="button" href="sms:18479093707&body=I love you veeeerry much Ethan, this web app is awesome!">Wanna text??😳</a>'
-    $("#ilybutton").remove();
+element.addEventListener("click", getFact);
+
+function getFact() {    
+    fetch("https://uselessfacts.jsph.pl/random.json?language=en")
+    .then(function(response1) { return response1.json() })
+    .then(function(data1) {
+        document.getElementById("hehe").innerHTML = data1.text
+    });
 }
+
 
 function getQuote(){
     let N = 0 
@@ -23,7 +27,6 @@ function getQuote(){
   });
 }
 
-
 function getWeather( cityID ){
     fetch('https://api.openweathermap.org/data/2.5/weather?id=' +cityID+ '&units=imperial&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
     .then(function(resp) {return resp.json() })
@@ -32,7 +35,6 @@ function getWeather( cityID ){
         let temp = data.main.temp
         temp = Math.trunc(temp)
         let picID = data.weather[0].icon
-        let picURL = "http://openweathermap.org/img/wn/"+ picID +"@2x.png"
         if (temp < 50){
             document.getElementById("temp").innerHTML = "Current Temp: " + temp + "°F 🥶🥶";
         }
@@ -49,5 +51,6 @@ function getWeather( cityID ){
 window.onload = function() {
     getWeather( 4259418 );
     getQuote()
+    getFact()
 }
 
