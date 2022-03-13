@@ -28,6 +28,10 @@ p {
   padding: 0;
 }
 
+h1 {
+  margin: 20px !important;
+}
+
 img {
   padding: 5px;
   width: 80px;
