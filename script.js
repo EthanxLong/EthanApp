@@ -1,14 +1,13 @@
 const element = document.getElementById("ilybutton");
-element.addEventListener("click", getFact);
+element.addEventListener("click", getQuote);
 
 function getFact() {    
     fetch("https://uselessfacts.jsph.pl/random.json?language=en")
     .then(function(response1) { return response1.json() })
     .then(function(data1) {
-        alert(data1.text)
+        document.getElementById("fact").innerHTML = (data1.text)
     });
 }
-
 
 function getQuote(){
     fetch("MotivationalQuotesDatabase.json")
@@ -20,9 +19,7 @@ function getQuote(){
           }          
         let random = getRandomInt(45000)
 
-        document.getElementById("type").innerHTML = data[random].type  + ' quote for you'
-        document.getElementById("quote").innerHTML = '"' + data[random].quote + '"'
-        document.getElementById("author").innerHTML = '-' + data[random].author
+        alert('"' + data[random].quote + '"' + '\n\n ' +  '-' + data[random].author)
 
     });
 }
@@ -60,6 +57,6 @@ function getWeather(){
 
 window.onload = function() {
     getWeather();
-    getQuote();
+    getFact();
 }
 
