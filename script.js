@@ -9,25 +9,25 @@ function getFact() {
     });
 }
 
+
 function getQuote(){
-    let N = 0 
-    fetch("https://type.fit/api/quotes")
-    .then(function(response) { return response.json() })
+    fetch("MotivationalQuotesDatabase.json")
+    .then(function(response)  { return response.json() })
     .then(function(data) {
-        let date = new Date().toLocaleDateString();
-        if (localStorage.yourapp_date == date){
-            document.getElementById("quote").innerHTML = '"' + data[N].text + '"';
-            document.getElementById("author").innerHTML = "-" + data[N].author;
-        }
-        if (localStorage.yourapp_date != date){
-            document.getElementById("quote").innerHTML = '"' + data[N + 1].text + '"';
-            document.getElementById("author").innerHTML = "-" + data[N + 1].author;
-        }
-  });
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+          }          
+        let random = getRandomInt(45000)
+
+        document.getElementById("type").innerHTML = data[random].type  + ' quote for you'
+        document.getElementById("quote").innerHTML = '"' + data[random].quote + '"'
+        document.getElementById("author").innerHTML = '-' + data[random].author
+
+    });
 }
 
 function getWeather(){
-    //api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
     fetch("https://api.freegeoip.app/json/?apikey=c93fa3a0-a31c-11ec-90a4-6f848fd20c1a")
     .then(function(response1) { return response1.json() })
     .then(function(data1) {
