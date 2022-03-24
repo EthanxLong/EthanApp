@@ -13,11 +13,6 @@ li {
   flex-direction: column-reverse;
 }
 
-.moveimg {
-  position: relative;
-  top: 7px;
-}
-
 body {
   background: linear-gradient(
     -90deg,
