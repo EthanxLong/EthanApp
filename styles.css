@@ -4,6 +4,20 @@ body {
   height: 100%;
 }
 
+ul {
+  display: flex;
+}
+
+li {
+  list-style-type: none;
+  flex-direction: column-reverse;
+}
+
+.moveimage {
+  position: relative;
+  top: 20px;
+}
+
 body {
   background: linear-gradient(
     -90deg,
