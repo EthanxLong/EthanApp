@@ -13,9 +13,9 @@ li {
   flex-direction: column-reverse;
 }
 
-.moveimage {
+.moveimg {
   position: relative;
-  top: 20px;
+  top: 7px;
 }
 
 body {
