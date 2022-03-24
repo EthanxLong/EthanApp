@@ -10,17 +10,17 @@ function getFact() {
 }
 
 function getQuote(){
-    fetch("MotivationalQuotesDatabase.json")
+    fetch("quotes.json")
     .then(function(response)  { return response.json() })
     .then(function(data) {
-
         function getRandomInt(max) {
-            return Math.floor(Math.random() * max);
-          }          
-        let random = getRandomInt(45000)
+            return Math.floor(Math.random() * max)
+        }
+        let random = getRandomInt(100)
+        let randomQuote = data.quotes[random].quote
+        let randomAuthor = data.quotes[random].author
 
-        alert('"' + data[random].quote + '"' + '\n\n ' +  '-' + data[random].author)
-
+        alert('"' + randomQuote + '"' + '\n' + '\n' + '- ' + randomAuthor)
     });
 }
 
