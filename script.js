@@ -54,10 +54,11 @@ function getWeather(){
         });
 
     } else {
-        fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
+        fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&units=metric&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
         // http://api.openweathermap.org/data/2.5/weather?lat=42&lon=-88&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4
         .then(function(resp) {return resp.json() })
         .then(function(data) {
+            console.log(data)
             let desc = data.weather[0].description
             let temp = data.main.temp
             temp = Math.trunc(temp)
