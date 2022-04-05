@@ -55,8 +55,17 @@ function getWeather(){
     
 }
 
+function loadModal(){
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        $('#exampleModal').modal(options)
+    }
+}
+
+
+
 window.onload = function() {
     getWeather();
     getFact();
+    // loadModal();
 }
 
