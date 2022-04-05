@@ -61,10 +61,6 @@ function loadModal(){
     }
 }
 
-
-
-
-
 window.onload = function() {
     getWeather();
     getFact();
