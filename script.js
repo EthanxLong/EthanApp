@@ -30,15 +30,17 @@ function getWeather(){
     .then(function(data1) {
         let lat = data1.latitude
         let long = data1.longitude
-        console.log(data1.city, data1.region_code)
+        let country = data1.country_code
+        console.log(data1)
 
         document.getElementById("location").innerHTML = data1.city + ', ' + data1.region_code
 
+
+        if (country == 'US') {
         fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&units=imperial&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
         // http://api.openweathermap.org/data/2.5/weather?lat=42&lon=-88&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4
         .then(function(resp) {return resp.json() })
         .then(function(data) {
-            console.log(data)
             let desc = data.weather[0].description
             let temp = data.main.temp
             temp = Math.trunc(temp)
@@ -50,8 +52,28 @@ function getWeather(){
         .catch(function() {
     
         });
-    });
+
+    } else {
+        fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
+        // http://api.openweathermap.org/data/2.5/weather?lat=42&lon=-88&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4
+        .then(function(resp) {return resp.json() })
+        .then(function(data) {
+            let desc = data.weather[0].description
+            let temp = data.main.temp
+            temp = Math.trunc(temp)
+            let picID = data.weather[0].icon
+            document.getElementById("temp").innerHTML = temp + "°C";
+            document.getElementById("desc").innerHTML = desc;
+            document.getElementById("icon").innerHTML = '<img src=' + 'http://openweathermap.org/img/wn/' + picID + '@2x.png>';
+        })
+        .catch(function() {
     
+        });
+
+    }
+
+
+    });
     
 }
 
