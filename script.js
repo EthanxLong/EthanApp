@@ -68,14 +68,9 @@ function getWeather(){
             document.getElementById("icon").innerHTML = '<img src=' + 'http://openweathermap.org/img/wn/' + picID + '@2x.png>';
         })
         .catch(function() {
-    
         });
-
     }
-
-
-    });
-    
+    }); 
 }
 
 function loadModal(){
