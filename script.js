@@ -25,7 +25,7 @@ function getQuote(){
 }
 
 function getWeather(){
-    fetch("https://api.freegeoip.app/json/?apikey=c93fa3a0-a31c-11ec-90a4-6f848fd20c1a")
+    fetch("https://api.ipbase.com/v1/json/?apikey=c93fa3a0-a31c-11ec-90a4-6f848fd20c1a")
     .then(function(response1) { return response1.json() })
     .then(function(data1) {
         let lat = data1.latitude
@@ -33,7 +33,7 @@ function getWeather(){
         let country = data1.country_code
         console.log(data1)
 
-        document.getElementById("location").innerHTML = data1.city + ', ' + data1.region_code
+        document.getElementById("location").innerHTML = data1.city + ', ' + data1.country_code
 
 
         if (country == 'US') {
@@ -84,4 +84,3 @@ window.onload = function() {
     getFact();
     loadModal();
 }
-
