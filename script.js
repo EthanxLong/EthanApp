@@ -33,7 +33,7 @@ function getWeather(){
         let country = data1.country_code
         console.log(data1)
 
-        document.getElementById("location").innerHTML = data1.city + ', ' + data1.country_code
+        document.getElementById("location").innerHTML = data1.city + ', ' + data1.region_name
 
 
         if (country == 'US') {
