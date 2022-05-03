@@ -1,10 +1,18 @@
+.DivBorder {
+  border-style: solid;
+  border-radius: 25px;
+  border-color: lightblue;
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+}
 html,
 body {
   width: 100%;
   height: 100%;
 }
 
-ul {
+ol {
   display: flex;
 }
 
@@ -25,6 +33,11 @@ body {
   animation: gradient 15s ease infinite;
   text-align: center;
 }
+blockquote {
+  margin: 0;
+}
+
+
 
 @keyframes gradient {
   0% {
@@ -43,15 +56,6 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-span {
-  border-style: solid;
-  border-radius: 25px;
-  border-color: lightblue;
-  display: inline-block;
-  margin: 5px;
-  padding: 10px;
 }
 
 h1,
@@ -77,17 +81,6 @@ h1 {
   display: inline-block;
   font-size: 16px;
   font: 1em sans-serif;
-}
-
-.quotes {
-  margin: 5px;
-  padding: 5px;
-  border-style: solid;
-  border-radius: 25px;
-  border-color: lightblue;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
 }
 
 #temp,

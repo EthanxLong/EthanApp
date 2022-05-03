@@ -20,7 +20,7 @@ function getQuote(){
         let randomQuote = data.quotes[random].quote
         let randomAuthor = data.quotes[random].author
         document.getElementById("quote").innerHTML = (randomQuote)
-        document.getElementById("author").innerHTML = ("-" + randomAuthor)
+        document.getElementById("author").innerHTML = ("—" + randomAuthor)
         $('#InspirationModal').modal()
     });
 }
@@ -33,6 +33,9 @@ function getWeather(){
         .then(function(resp) {return resp.json() })
         .then(function(data1) {
             console.log(data1)
+            if (data1.results[0].components.city == "undefined") {
+                document.getElementById("location").innerHTML = data1.results[0].components.city + ', ' + data1.results[0].components.state_code
+            }
             document.getElementById("location").innerHTML = data1.results[0].components.city + ', ' + data1.results[0].components.state_code
             
         
