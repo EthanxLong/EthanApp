@@ -18,11 +18,11 @@
     </nav>
   <!-- Modals sourced from bootstrap-->  
   <!-- QR Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
          <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">This site looks best on mobile</h5>
+          <h5 class="modal-title" id="qrModalLabel">This site looks best on mobile</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -30,17 +30,18 @@
         <div class="modal-body">
             <img src="frame.png" alt="QRcode" height="200">
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button onclick="understandButton()" type="button" class="btn btn-primary" data-dismiss="modal">I understand</button>
+        </div>
       </div> 
     </div>
   </div>
   <!-- Inspiration Modal -->
-  <div class="modal fade" id="InspirationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="InspirationModal" tabindex="-1" role="dialog" aria-labelledby="InspirationModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
          <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
         </div>
         <div class="modal-body">
             <figure>
@@ -49,27 +50,35 @@
                 </blockquote>
                 <figcaption id="author"></figcaption>      
             </figure>
-            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button onclick="getQuote()" type="button" class="btn btn-primary">Another quote</button>
         </div>
       </div> 
     </div>
   </div>
   <!-- ContactMe Modal -->
-  <div class="modal fade" id="ContactMe" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="ContactMe" tabindex="-1" role="dialog" aria-labelledby="ContactMeLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Send me a message!</h5>
+          <h5 class="modal-title" id="ContactMeLabel">Send me an email!</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          ...
+          <form> 
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject">
+            <label for="body">Body</label>
+            <textarea id="body" name="body" style="height:200px"></textarea>
+          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <a id="sendEmail" href=""><button type="button" class="btn btn-primary">Send email</button></a>
         </div>
       </div>
     </div>
@@ -90,13 +99,13 @@
 
     <div class="flex-container">
         <div>
-            <button onclick="getQuote()" class="button" id="ilybutton">Need Inspiration?</button>
+            <button onclick="getQuote()" class="inspirationButton" id="ilybutton">Need inspiration?</button>
         </div>
     </div>
     
     <div class="flex-container">
       <footer>
-        <button onclick="getContacts()" id="contactMe">Contact me</button>
+        <button onclick="getContacts()" class="contactMe" id="contactMe">Contact me</button>
       </footer>
   </div>
     

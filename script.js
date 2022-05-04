@@ -1,14 +1,26 @@
-// const element = document.getElementById("ilybutton");
-// element.addEventListener("click", getQuote);
-
-// const contactMe = document.getElementById("contactMe");
-// element.addEventListener("click", getContacts);
-
-
+// function to load the contact me modal
 function getContacts() {
     $('#ContactMe').modal()
 }
 
+// fill in the email subject and body fields with the form subject and body when button is pressed
+$(document).ready(function() {
+
+    var $sendEmailN = $('#sendEmail');
+    var $subjectN = $('#subject');
+    var $bodyN = $('#body');
+
+    function updateEmail() {
+        $sendEmailN.attr('href', 'mailto:ethalong@iu.edu?' +
+        'subject=' + encodeURIComponent($subjectN.val()) +
+        '&body=' + encodeURIComponent($bodyN.val()));
+    }
+
+    $('#subject,#body').on('input', updateEmail);
+    updateEmail();
+});
+
+// get a random fact using a random fact API
 function getFact() {    
     fetch("https://uselessfacts.jsph.pl/random.json?language=en")
     .then(function(response1) { return response1.json() })
@@ -17,6 +29,7 @@ function getFact() {
     });
 }
 
+// get a quote using a local quotes json db
 function getQuote(){
     fetch("quotes.json")
     .then(function(response)  { return response.json() })
@@ -33,6 +46,7 @@ function getQuote(){
     });
 }
 
+// get users location if they allow, then give them the weather, if user is not in US, give them the degrees in Celsius.
 function getWeather(){
     if (!navigator.geolocation) {
         console.error(`Your browser doesn't support Geolocation`);
@@ -87,18 +101,22 @@ function getWeather(){
 }
 } 
 
-
-function loadModal(){
-    if( screen.width > 480 ) {     
-        $('#exampleModal').modal()
-    }
+// if user clicks I understand on the QRmodal, they will not get the prompt again.
+function understandButton() {
+    localStorage.setItem('visited', true);
 }
 
-  
+// function to detect if user is NOT on a mobile device (if screen width is more than 480 pixels)
+function loadModal(){
+    if(typeof window.localStorage !== "undefined" && !localStorage.getItem('visited') && screen.width > 480) {
+        $('#qrModal').modal()  
+   }
+}
 
+// load these functions on when the browser loads
 window.onload = function() {
     getWeather();
     getFact();
     loadModal();
-    
+
 }
