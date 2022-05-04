@@ -51,19 +51,12 @@ function getWeather(){
     if (!navigator.geolocation) {
         console.error(`Your browser doesn't support Geolocation`);
     } else {navigator.geolocation.getCurrentPosition((position) => {
-        fetch('https://api.opencagedata.com/geocode/v1/json?key=cadf225b484c4d629d0ae4bf80c5493b&q='+ position.coords.latitude  + '%2C+' + position.coords.longitude + '&pretty=1&no_annotations=1')
+        fetch(' http://api.openweathermap.org/geo/1.0/reverse?lat='+ position.coords.latitude + '&lon='+ position.coords.longitude + '&limit=5&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
         .then(function(resp) {return resp.json() })
-        .then(function(data1) {
-            console.log(data1)
-            if (data1.results[0].components.city == "undefined") {
-                document.getElementById("location").innerHTML = data1.results[0].components.city + ', ' + data1.results[0].components.state_code
-            }
-            document.getElementById("location").innerHTML = data1.results[0].components.city + ', ' + data1.results[0].components.state_code
+        .then(function(data2) {
             
-        
-    if (data1.results[0].components.country_code == "us") {
+    if (data2[0].country == "US") {
         fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&units=imperial&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
-        // http://api.openweathermap.org/data/2.5/weather?lat=39.8086&lon=-85.9873&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4
         .then(function(resp) {return resp.json() })
         .then(function(data) {
             let desc = data.weather[0].description
@@ -73,6 +66,8 @@ function getWeather(){
             document.getElementById("temp").innerHTML = temp + "°F";
             document.getElementById("desc").innerHTML = desc;
             document.getElementById("icon").innerHTML = '<img src=' + 'http://openweathermap.org/img/wn/' + picID + '@2x.png>';
+
+            document.getElementById("location").innerHTML = data2[0].name + ', ' + data2[0].state
             
         })
         .catch(function() {
@@ -81,10 +76,8 @@ function getWeather(){
 
     } else {
         fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&units=metric&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
-        // http://api.openweathermap.org/data/2.5/weather?lat=42&lon=-88&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4
         .then(function(resp) {return resp.json() })
         .then(function(data) {
-            console.log(data)
             let desc = data.weather[0].description
             let temp = data.main.temp
             temp = Math.trunc(temp)
@@ -92,13 +85,16 @@ function getWeather(){
             document.getElementById("temp").innerHTML = temp + "°C";
             document.getElementById("desc").innerHTML = desc;
             document.getElementById("icon").innerHTML = '<img src=' + 'http://openweathermap.org/img/wn/' + picID + '@2x.png>';
+
+            document.getElementById("location").innerHTML = data2[0].name + ', ' + data2[0].state
         })
         .catch(function() {
         });
     }
+
     });
-});
-}
+    });
+    }   
 } 
 
 // if user clicks I understand on the QRmodal, they will not get the prompt again.
