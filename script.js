@@ -1,5 +1,13 @@
-const element = document.getElementById("ilybutton");
-element.addEventListener("click", getQuote);
+// const element = document.getElementById("ilybutton");
+// element.addEventListener("click", getQuote);
+
+// const contactMe = document.getElementById("contactMe");
+// element.addEventListener("click", getContacts);
+
+
+function getContacts() {
+    $('#ContactMe').modal()
+}
 
 function getFact() {    
     fetch("https://uselessfacts.jsph.pl/random.json?language=en")
