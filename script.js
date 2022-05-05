@@ -124,14 +124,6 @@ function loadModal(){
    }
 }
 
-// load these functions on when the browser loads
-window.onload = function() {
-    getWeather();
-    getFact();
-    loadModal();
-
-}
-
 $(document).ready(function() {
     if(window.location.href.indexOf('#qrModal') != -1) {
       $('#qrModal').modal('show');
@@ -151,3 +143,11 @@ $(document).ready(function() {
       $('#ContactMe').modal('show');
     }
 });
+
+// load these functions on when the browser loads
+window.onload = function() {
+    getWeather();
+    getFact();
+    loadModal();
+
+}
