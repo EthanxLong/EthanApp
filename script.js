@@ -12,7 +12,7 @@
 // get users location if they allow, then give them the weather, if user is not in US, give them the degrees in Celsius.
 function getWeather(){
     if (!navigator.geolocation) {
-        console.error(`Your browser doesn't support Geolocation`);
+        console.log(`Your browser doesn't support Geolocation`);
     } else {navigator.geolocation.getCurrentPosition((position) => {
         fetch(' http://api.openweathermap.org/geo/1.0/reverse?lat='+ position.coords.latitude + '&lon='+ position.coords.longitude + '&limit=5&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
         .then(function(resp) {return resp.json() })
