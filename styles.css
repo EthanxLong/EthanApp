@@ -78,23 +78,6 @@ blockquote {
   text-align: center;
 }
 
-h1,
-a,
-p {
-  font-family: "arial"; /* Requirement 15: an example of typography */
-  font-size: 20px;
-  margin: 0;
-  padding: 0;
-}
-
-.firstnLastname, .description {
-  align-items: flex-start;
-}
-
-h1 {
-  margin: 20px !important;
-}
-
 .inspirationButton {
   background-color: lightsalmon;
   border-radius: 25px;
@@ -119,6 +102,24 @@ h1 {
   font: 1em sans-serif;
 }
 
+h1,
+a,
+p {
+  font-family: "arial"; /* Requirement 15: an example of typography */
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.firstnLastname, .description {
+  align-items: flex-start;
+}
+
+h1 {
+  margin: 20px !important;
+}
+
+
 input[type=text], select, textarea {
   width: 100%;
   padding: 12px;
@@ -137,4 +138,13 @@ input[type=text], select, textarea {
 
 button:hover {
   background-color: lightgreen; /* Requirement 16: an example of rollover */
+}
+
+@font-face {
+  font-family: SoraBold;
+  src: url(Sora-Bold.ttf);
+}
+
+.SpecialFont {
+  font-family: SoraBold; 
 }

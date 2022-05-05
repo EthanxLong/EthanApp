@@ -62,7 +62,7 @@
   </div>
 
   <!-- Inspiration Modal -->
-  <div class="modal fade" id="InspirationModal" tabindex="-1" role="dialog" aria-labelledby="InspirationModalLabel" aria-hidden="true">
+  <div class="modal fade" id="InspirationModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
          <div class="modal-header">
@@ -77,8 +77,10 @@
             </figure>
         </div>
         <div class="modal-footer">
+          
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button onclick="getQuote()" type="button" class="btn btn-primary">Another quote</button>
+       
         </div>
       </div> 
     </div>
@@ -101,12 +103,11 @@
             <input type="text" id="subject" name="subject">
             <label for="body">Body</label>
             <textarea id="body" name="body" style="height:200px"></textarea>
+            <input type="reset">
+            <a id="sendEmail" href="">Send email</a>
           </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <a id="sendEmail" href=""><button type="button" class="btn btn-primary">Send email</button></a>
-        </div>
+  
       </div>
     </div>
   </div>
@@ -120,7 +121,7 @@
     </div>
 
     <div>
-        <h1>Random Fact</h1>
+        <h1 class="SpecialFont">Random Fact</h1>
             <div class="DivBorder">
                 <p id="fact"></p>
             </div>

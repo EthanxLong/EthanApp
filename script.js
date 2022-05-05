@@ -26,7 +26,7 @@ function getWeather(){
             let picID = data.weather[0].icon
             document.getElementById("temp").innerHTML = temp + "°F";
             document.getElementById("desc").innerHTML = desc;
-            document.getElementById("icon").innerHTML = '<img src=' + 'http://openweathermap.org/img/wn/' + picID + '@2x.png>';
+            document.getElementById("icon").innerHTML = '<img src=' + 'https://openweathermap.org/img/wn/' + picID + '@2x.png>';
 
             document.getElementById("location").innerHTML = data2[0].name + ', ' + data2[0].state
 
