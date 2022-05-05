@@ -131,3 +131,23 @@ window.onload = function() {
     loadModal();
 
 }
+
+$(document).ready(function() {
+    if(window.location.href.indexOf('#qrModal') != -1) {
+      $('#qrModal').modal('show');
+    }
+  });
+
+$(document).ready(function() {
+    if(window.location.href.indexOf('#InspirationModal') != -1) {
+      $('#InspirationModal').modal('show');
+      document.getElementById("quote").innerHTML = "example Quote"
+        document.getElementById("author").innerHTML = "example author"
+    }
+});
+
+$(document).ready(function() {
+    if(window.location.href.indexOf('#ContactMe') != -1) {
+      $('#ContactMe').modal('show');
+    }
+});
