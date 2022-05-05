@@ -1,3 +1,16 @@
+/*
+Author: Ethan Long
+  Date: 5/4/2022
+  Modification History
+  Apr 15 2022: Added HTML & CSS
+  Apr 22 2022: Figured out how to use APIs (Openweathermap, randomfact, etc)
+  Apr 28 2022: Styled it better for mobile devices
+  May 2 2022: Final touches and QoL fixes.
+
+  Testing: This website is designed for mobile devices (for looks and because location data is more precise) 
+  although the browsers are similar the buttons do look better in Safari.
+*/
+
 .DivBorder {
   border-style: solid;
   border-radius: 25px;
@@ -68,7 +81,7 @@ blockquote {
 h1,
 a,
 p {
-  font-family: "arial";
+  font-family: "arial"; /* Requirement 15: an example of typography */
   font-size: 20px;
   margin: 0;
   padding: 0;
@@ -118,5 +131,10 @@ input[type=text], select, textarea {
 }
 #temp,
 #desc {
-  font-size: 30px !important;
+  font-size: 30px !important; /* Requirement 8: example of a style that overrides another */
+}
+
+
+button:hover {
+  background-color: lightgreen; /* Requirement 16: an example of rollover */
 }

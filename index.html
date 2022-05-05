@@ -4,7 +4,11 @@
   Modification History
   Apr 15 2022: Added HTML & CSS
   Apr 22 2022: Figured out how to use APIs (Openweathermap, randomfact, etc)
-  Apr 28 2022: 
+  Apr 28 2022: Styled it better for mobile devices
+  May 2 2022: Final touches and QoL fixes.
+
+  Testing: This website is designed for mobile devices (for looks and because location data is more precise) 
+  although the browsers are similar the buttons do look better in Safari.
 -->
 
 
@@ -21,12 +25,14 @@
 </head>
 <body>
     <nav>
+      <!--Requirement 12. ol-->
         <ol>
+          <!--Requirement 13. three images (3rd one is pulled in from OpenWeatherMap.org check script.js file line 20.)-->
             <li><a href="https://github.com/EthanxLong" target= "_blank"><img src="github.png" alt="My Github"></a></li>
             <li><a href="https://www.linkedin.com/in/ethanxlong/" target= "_blank"><img src="linkedin.png" alt="My Linkedin"></a></li>
         </ol>
     </nav>
-    
+
   <!-- Modals sourced from bootstrap-->
 
   <!-- QR Modal -->
@@ -58,6 +64,7 @@
         </div>
         <div class="modal-body">
             <figure>
+              <!--Requirement 11. Blockquote-->
                 <blockquote>
                     <q id="quote"> </q>
                 </blockquote>
@@ -83,6 +90,7 @@
           </button>
         </div>
         <div class="modal-body">
+          <!--Requirement 14. one form (shows in contact me button)-->
           <form> 
             <label for="subject">Subject</label>
             <input type="text" id="subject" name="subject">

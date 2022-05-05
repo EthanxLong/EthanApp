@@ -1,3 +1,67 @@
+// Author: Ethan Long
+//   Date: 5/4/2022
+//   Modification History
+//   Apr 15 2022: Added HTML & CSS
+//   Apr 22 2022: Figured out how to use APIs (Openweathermap, randomfact, etc)
+//   Apr 28 2022: Styled it better for mobile devices
+//   May 2 2022: Final touches and QoL fixes.
+// 
+//   Testing: This website is designed for mobile devices (for looks and because location data is more precise) 
+//   although the browsers are similar the buttons do look better in Safari.
+
+// get users location if they allow, then give them the weather, if user is not in US, give them the degrees in Celsius.
+function getWeather(){
+    if (!navigator.geolocation) {
+        console.error(`Your browser doesn't support Geolocation`);
+    } else {navigator.geolocation.getCurrentPosition((position) => {
+        fetch(' http://api.openweathermap.org/geo/1.0/reverse?lat='+ position.coords.latitude + '&lon='+ position.coords.longitude + '&limit=5&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
+        .then(function(resp) {return resp.json() })
+        .then(function(data2) {
+            
+    if (data2[0].country == "US") {
+        fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&units=imperial&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
+        .then(function(resp) {return resp.json() })
+        .then(function(data) {
+            let desc = data.weather[0].description
+            let temp = data.main.temp
+            temp = Math.trunc(temp)
+            let picID = data.weather[0].icon
+            document.getElementById("temp").innerHTML = temp + "°F";
+            document.getElementById("desc").innerHTML = desc;
+            document.getElementById("icon").innerHTML = '<img src=' + 'http://openweathermap.org/img/wn/' + picID + '@2x.png>';
+
+            document.getElementById("location").innerHTML = data2[0].name + ', ' + data2[0].state
+
+            console.log(data)
+            
+        })
+        .catch(function() {
+    
+        });
+
+    } else {
+        fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&units=metric&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
+        .then(function(resp) {return resp.json() })
+        .then(function(data) {
+            let desc = data.weather[0].description
+            let temp = data.main.temp
+            temp = Math.trunc(temp)
+            let picID = data.weather[0].icon
+            document.getElementById("temp").innerHTML = temp + "°C";
+            document.getElementById("desc").innerHTML = desc;
+            document.getElementById("icon").innerHTML = '<img src=' + 'http://openweathermap.org/img/wn/' + picID + '@2x.png>';
+
+            document.getElementById("location").innerHTML = data2[0].name + ', ' + data2[0].state
+        })
+        .catch(function() {
+        });
+    }
+
+    });
+    });
+    }   
+} 
+
 // function to load the contact me modal
 function getContacts() {
     $('#ContactMe').modal()
@@ -46,56 +110,7 @@ function getQuote(){
     });
 }
 
-// get users location if they allow, then give them the weather, if user is not in US, give them the degrees in Celsius.
-function getWeather(){
-    if (!navigator.geolocation) {
-        console.error(`Your browser doesn't support Geolocation`);
-    } else {navigator.geolocation.getCurrentPosition((position) => {
-        fetch(' http://api.openweathermap.org/geo/1.0/reverse?lat='+ position.coords.latitude + '&lon='+ position.coords.longitude + '&limit=5&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
-        .then(function(resp) {return resp.json() })
-        .then(function(data2) {
-            
-    if (data2[0].country == "US") {
-        fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&units=imperial&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
-        .then(function(resp) {return resp.json() })
-        .then(function(data) {
-            let desc = data.weather[0].description
-            let temp = data.main.temp
-            temp = Math.trunc(temp)
-            let picID = data.weather[0].icon
-            document.getElementById("temp").innerHTML = temp + "°F";
-            document.getElementById("desc").innerHTML = desc;
-            document.getElementById("icon").innerHTML = '<img src=' + 'http://openweathermap.org/img/wn/' + picID + '@2x.png>';
 
-            document.getElementById("location").innerHTML = data2[0].name + ', ' + data2[0].state
-            
-        })
-        .catch(function() {
-    
-        });
-
-    } else {
-        fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&units=metric&appid=a1b5b8dc03a7d9f84dc7e21d4d023ce4')
-        .then(function(resp) {return resp.json() })
-        .then(function(data) {
-            let desc = data.weather[0].description
-            let temp = data.main.temp
-            temp = Math.trunc(temp)
-            let picID = data.weather[0].icon
-            document.getElementById("temp").innerHTML = temp + "°C";
-            document.getElementById("desc").innerHTML = desc;
-            document.getElementById("icon").innerHTML = '<img src=' + 'http://openweathermap.org/img/wn/' + picID + '@2x.png>';
-
-            document.getElementById("location").innerHTML = data2[0].name + ', ' + data2[0].state
-        })
-        .catch(function() {
-        });
-    }
-
-    });
-    });
-    }   
-} 
 
 // if user clicks I understand on the QRmodal, they will not get the prompt again.
 function understandButton() {
